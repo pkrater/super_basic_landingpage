@@ -137,8 +137,8 @@ function loop() {
   }
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.map(particle => {
-    particle.filter(part => !part.dead).forEach(part => {
+  particles.map(emitter => {
+    emitter.filter(part => !part.dead).forEach(part => {
       part.update();
       part.draw(ctx, "ball");
       if (part.die()) {
