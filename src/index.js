@@ -48,16 +48,11 @@ function clickBurst(e) {
 }
 
 function burst(numParticles, obj) {
-  console.log(obj);
-  //particles = [];
-  //for (let i = 0; i < numParticles; i++) particles.push(particle(obj))
-  particles = [...Array(numParticles)].map(part => particle(this, obj));
-  //console.log(particles);
+  particles.push([...Array(numParticles)].map(part => particle(this, obj)));
+  // console.log(particles);
 }
 
 function startEmitter() {
-  //let setup = Object.assign(obj, {gravity: 0.02, bounce: false});
-  //burst(10, setup);
   loop();
 }
 
@@ -78,22 +73,6 @@ const particle = (context, obj) => {
     radius: 2,
     grow: 1.015
   };
-
-  // create variables adding passed object parameters to defaults
-  /* let {
-    x,
-    y,
-    vx,
-    vy,
-    gravity,
-    bounce,
-    damping,
-    age,
-    maxAge,
-    color,
-    radius,
-    grow,
-  } = Object.assign(defaults, obj) */
 
   const data = Object.assign(defaults, obj);
 
@@ -158,13 +137,14 @@ function loop() {
   }
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  particles.filter(part => !part.dead).forEach(part => {
-    part.update();
-    part.draw(ctx, "ball");
-    if (part.die()) {
-      part.dead = true;
-    }
+  particles.map(particle => {
+    particle.filter(part => !part.dead).forEach(part => {
+      part.update();
+      part.draw(ctx, "ball");
+      if (part.die()) {
+        part.dead = true;
+      }
+    });
   });
 
   requestAnimationFrame(loop);
