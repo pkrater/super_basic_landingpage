@@ -11,8 +11,8 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let particles = [];
 //const numParticles = 10
-const emitRate = 100;
-const emitBurstNum = 30;
+const emitRate = 10;
+const emitBurstNum = 100;
 const continous = 0;
 let counter = 0;
 
@@ -36,15 +36,14 @@ function getRandomInt(min, max) {
 }
 
 window.addEventListener("click", clickBurst);
-
 window.addEventListener("touchstart", clickBurst);
 
 function clickBurst(e) {
   const x = e.clientX || e.touches[0].clientX;
   const y = e.clientY || e.touches[0].clientY;
   //spawnNew({x, y}, numParticles);
-  console.log(x);
-  burst(30, { x, y, damping: 0.97, shape: "dot" });
+  //console.log(x);
+  burst(30, { x, y, grow: 1, damping: 0.97, shape: "dot" });
 }
 
 function burst(numParticles, obj) {
@@ -92,6 +91,7 @@ const particle = (context, obj) => {
       c.fill();
       c.fillStyle = "rgba(255,255,255,0.5)"; //white
       c.lineWidth = 0;
+      //c.filter = 'blur(1px)';
       //ctx.strokeStyle = color;
       //ctx.stroke();
     }
