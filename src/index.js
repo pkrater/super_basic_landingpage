@@ -12,7 +12,7 @@ canvas.height = window.innerHeight;
 let particles = [];
 //const numParticles = 10
 const emitRate = 10;
-const emitBurstNum = 100;
+const emitBurstNum = 10;
 const continous = 0;
 let counter = 0;
 
@@ -67,8 +67,8 @@ const particle = (context, obj) => {
     maxAge: getRandomInt(10, 100),
     bounce: false,
     gravity: 0,
-    emitRate: 200,
-    damping: 0.972,
+    emitRate: 300,
+    damping: 1.972,
     radius: 2,
     grow: 1.015
   };
@@ -125,7 +125,7 @@ const particle = (context, obj) => {
 function loop() {
   if (continous) {
     if (counter++ > emitRate) {
-      burst(getRandomInt(emitBurstNum, 100), {
+      burst(getRandomInt(emitBurstNum, 500), {
         x: canvas.width * Math.random(),
         y: canvas.height * Math.random(),
         bounce: true,
@@ -138,13 +138,15 @@ function loop() {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   particles.map(emitter => {
-    emitter.filter(part => !part.dead).forEach(part => {
-      part.update();
-      part.draw(ctx, "ball");
-      if (part.die()) {
-        part.dead = true;
-      }
-    });
+    emitter
+      .filter(part => !part.dead)
+      .forEach(part => {
+        part.update();
+        part.draw(ctx, "ball");
+        if (part.die()) {
+          part.dead = true;
+        }
+      });
   });
 
   requestAnimationFrame(loop);
