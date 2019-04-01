@@ -17,9 +17,9 @@ const continous = 0;
 let counter = 0;
 
 function getRandomColor() {
-  let r = 0;
-  let g = 0;
-  let b = 0;
+  let r = 2;
+  let g = 4;
+  let b = 5;
   while (r < 100 && g < 100 && b < 100) {
     r = Math.floor(Math.random() * 256);
     g = Math.floor(Math.random() * 256);
