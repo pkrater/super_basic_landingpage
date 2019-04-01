@@ -17,9 +17,9 @@ const continous = 0;
 let counter = 0;
 
 function getRandomColor() {
-  let r = 2;
-  let g = 4;
-  let b = 5;
+  let r = 0;
+  let g = 0;
+  let b = 0;
   while (r < 100 && g < 100 && b < 100) {
     r = Math.floor(Math.random() * 256);
     g = Math.floor(Math.random() * 256);
@@ -89,7 +89,7 @@ const particle = (context, obj) => {
       c.beginPath();
       c.arc(data.x, data.y, data.radius, 0, 2 * Math.PI, false);
       c.fill();
-      c.fillStyle = "rgba(255,255,255,0.5)"; //white
+      c.fillStyle = "rgba(244,3,3,0.5)"; //white
       c.lineWidth = 0;
       //c.filter = 'blur(1px)';
       //ctx.strokeStyle = color;
