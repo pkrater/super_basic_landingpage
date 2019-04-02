@@ -1,5 +1,3 @@
-import { brotliDecompressSync } from "zlib";
-
 document.getElementById("app").innerHTML = `
 <h1>krater.se</h1>
 <div class="contactInfo">
