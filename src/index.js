@@ -2,8 +2,8 @@ import { brotliDecompressSync } from "zlib";
 
 document.getElementById("app").innerHTML = `
 <h1>krater.se</h1>
-<div>
-  phone: 0704-890413 mail: info@krater.se
+<div class="contactInfo">
+  <span>phone: 0704-890413</span> <span>mail: info@krater.se</span>
 </div>
 `;
 
