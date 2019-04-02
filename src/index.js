@@ -1,3 +1,5 @@
+import { brotliDecompressSync } from "zlib";
+
 document.getElementById("app").innerHTML = `
 <h1>krater.se</h1>
 <div>
@@ -40,9 +42,9 @@ window.addEventListener("touchstart", clickBurst);
 
 function clickBurst(e) {
   const x = e.clientX || e.touches[0].clientX;
-  const y = e.clientY || e.touches[0].clientY;
+  const y = e.clientY + document.body.scrollTop || e.touches[0].clientY;
   //spawnNew({x, y}, numParticles);
-  //console.log(x);
+
   burst(30, { x, y, grow: 1, damping: 0.97, shape: "dot" });
 }
 
